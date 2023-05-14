@@ -37,6 +37,7 @@ $langDeleteAdmin = "Deletion of the administrator by id:";
 $langNotFeasible = "it is not feasible";
 $langNomPageAddHtPass = "Add admin";
 $langPassword = "Password";
+$langPassCode="Passcode (optional)";
 $langAdd = "Add";
 $langNotFound = "not found";
 $langWith = "with";

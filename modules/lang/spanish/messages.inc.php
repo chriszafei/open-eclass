@@ -1071,6 +1071,7 @@ un usuario y una contraseña, que puedes obtener haciendo clic en 'registro'. ".
 puedes crear Websites para cursos haciendo click en registro también, pero seleccionando entonces ''Crear el sitio del curso.";
 $langAdminTool = "Herramientas de Admin";
 $langPass = "Contraseña";
+$langPassCode="Passcode (optional)";
 $langHelp = "Ayuda";
 $langSelection = "Selección";
 $langMenu = "Menú";

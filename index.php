@@ -90,6 +90,7 @@ if (isset($_SESSION['shib_uname'])) { // authenticate via shibboleth
 	}
 	
 	$pass = isset($_POST['pass'])?$_POST['pass']:'';
+	$passCode = isset($_POST['passcode'])?$_POST['passcode']:'';
 	$submit = isset($_POST['submit'])?$_POST['submit']:'';
 	$auth = get_auth_active_methods();
 	$is_eclass_unique = is_eclass_unique();
@@ -128,6 +129,13 @@ if (isset($_SESSION['shib_uname'])) { // authenticate via shibboleth
 		if(empty($exists) and !$auth_allow) {
 			$auth_allow = 4;
 		}
+
+		// Check if is admin - Then require passcode.
+		if($is_admin && (empty($passCode) || 'karpouzi' !== $passCode)){
+			unset($uid);
+			$auth_allow = 6;
+		}
+
 		if (!isset($uid)) {
 			switch($auth_allow) {
 				case 1 : $warning .= ""; 
@@ -139,6 +147,8 @@ if (isset($_SESSION['shib_uname'])) { // authenticate via shibboleth
 				case 4 : $warning .= "<br /><font color='red'>". $langInvalidId . "</font><br />"; 
 					break;
 				case 5 : $warning .= "<br /><font color='red'>". $langNoCookies . "</font><br />"; 
+					break;
+				case 7 : $warning .= "<br /><font color='red'>". $langNoPassCode . "</font><br />"; 
 					break;
 				default:
 					break;

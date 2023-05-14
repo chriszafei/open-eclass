@@ -58,7 +58,8 @@ function db_query($sql, $db = FALSE) {
 	}
 	$r = mysql_query($sql);
 
-	if (defined('DEBUG_MYSQL') or mysql_errno()) {
+	// Prevent display of MYSQL errors.
+	if (defined('DEBUG_MYSQL')) {
 		echo '<hr>' . mysql_errno() . ': ' . mysql_error()
 		. "<br><pre>$sql</pre><hr>";
 	}
